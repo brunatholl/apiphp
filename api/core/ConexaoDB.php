@@ -6,7 +6,7 @@ class ConexaoDB {
     const PORT = '5432';
     const DBNAME = 'postgres';
     const USER = 'postgres.vtglfccczgitidfkllmq';
-    const PASS = 'qfl657pIwWIVtO29';
+    const PASS = '2LkZ9VcOsYM80XuI';
 
     private static $conexao = null;
 
