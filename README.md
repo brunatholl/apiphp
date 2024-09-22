@@ -1,5 +1,7 @@
 # apiphp - v1
 apiphp
+# Instalar o Slim na versao 3 com composer e PHP 7.0.33
+composer require slim/slim:3.*
 
 # FAZER DEPLOY NO FLY.IO
 * 1 - SELECIONAR ARQUIVO POM.XML NO "INTELIJ"

@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y libpq-dev libcurl3-dev libxml2-dev libj
 RUN pecl install xdebug-2.5.5 imagick && docker-php-ext-enable xdebug imagick
 RUN docker-php-ext-install pgsql pdo pdo_pgsql curl xml calendar gd soap
 RUN apt-get install -y zlib1g-dev && rm -rf /var/lib/apt/lists/* && docker-php-ext-install zip
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN rm -rf /var/log/apache2/access.log
 

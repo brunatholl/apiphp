@@ -1,1 +1,1 @@
-docker build . -t sistema
+docker build . -t apiphp
