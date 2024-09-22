@@ -1,0 +1,40 @@
+# flyctl launch added from .gitignore
+**\.idea
+
+# flyctl launch added from .idea\.gitignore
+# Default ignored files
+.idea\shelf
+.idea\workspace.xml
+
+# flyctl launch added from api\.gitignore
+api\**\.idea
+
+# flyctl launch added from api\lib\slim\nikic\fast-route\.gitignore
+api\lib\slim\nikic\fast-route\vendor
+api\lib\slim\nikic\fast-route\**\.idea
+
+# ignore lock file since we have no extra dependencies
+api\lib\slim\nikic\fast-route\**\composer.lock
+
+# flyctl launch added from api\lib\slim\pimple\pimple\.gitignore
+api\lib\slim\pimple\pimple\**\phpunit.xml
+api\lib\slim\pimple\pimple\**\composer.lock
+api\lib\slim\pimple\pimple\vendor
+
+# flyctl launch added from api\lib\slim\psr\container\.gitignore
+api\lib\slim\psr\container\**\composer.lock
+api\lib\slim\psr\container\**\composer.phar
+api\lib\slim\psr\container\vendor
+
+# flyctl launch added from api\lib\slim\psr\http-factory\.gitignore
+api\lib\slim\psr\http-factory\**\composer.lock
+api\lib\slim\psr\http-factory\**\vendor
+
+# flyctl launch added from api\lib\slim\tuupola\http-factory\.gitignore
+api\lib\slim\tuupola\http-factory\vendor
+api\lib\slim\tuupola\http-factory\report
+api\lib\slim\tuupola\http-factory\**\coverage.xml
+api\lib\slim\tuupola\http-factory\**\composer.lock
+api\lib\slim\tuupola\http-factory\**\.phplint-cache
+api\lib\slim\tuupola\http-factory\**\.env
+fly.toml
