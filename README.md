@@ -3,6 +3,12 @@ apiphp
 # Instalar o Slim na versao 3 com composer e PHP 7.0.33
 composer require slim/slim:3.*
 
+# Ping local
+http://localhost/apiphp/api/api.php/ping
+
+# Ping Docker 
+http://localhost:8000/api/api.php/ping
+
 # FAZER DEPLOY NO FLY.IO
 * 1 - SELECIONAR ARQUIVO POM.XML NO "INTELIJ"
 * 2 - IR DO LADO DIREITO EM MAVEM E IR NA OPÇÃO "Execute Maven Goal" e selecionar "mvn deploy"
