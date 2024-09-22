@@ -9,12 +9,14 @@ use Psr\Http\Message\ResponseInterface as Response;
  * Date: 10/12/2020
  * Time: 17:40
  */
-require_once("core/Query.php");
+require_once("./core/Query.php");
 class ControllerApiBase {
 
     public function callInfoApi(Request $request, Response $response, array $args) {
+
         $data = array("Info:" => date("Y-m-d H:i:s"));
-        return $response->withJson($data, 200);
+
+        return $response->withStatus(201)->withJson($data, 200);
     }
 
     public function callPing(Request $request, Response $response, array $args) {

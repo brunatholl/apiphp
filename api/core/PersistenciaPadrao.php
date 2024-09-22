@@ -1,7 +1,7 @@
 <?php
 
 /* Responsável por realizar obter os modelos e realizar as operações no banco de dados */
-require_once ("Query.php");
+require_once("Query.php");
 abstract class PersistenciaPadrao {
 
     /**

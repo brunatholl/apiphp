@@ -1,6 +1,6 @@
 <?php
 
-require_once ("ConexaoDB.php");
+require_once("ConexaoDB.php");
 class Query {
 
     private $conexao;

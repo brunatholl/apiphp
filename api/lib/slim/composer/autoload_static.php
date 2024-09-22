@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit5916e7faa1324bb81d4b0f4a1022ef23
 {
     public static $files = array (
-        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -41,47 +41,47 @@ class ComposerStaticInit5916e7faa1324bb81d4b0f4a1022ef23
     public static $prefixDirsPsr4 = array (
         'Tuupola\\Middleware\\' => 
         array (
-            0 => __DIR__ . '/..' . '/tuupola/callable-handler/src',
-            1 => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src',
-            2 => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src',
+            0 => __DIR__ . '/..',
+            1 => __DIR__ . '/..',
+            2 => __DIR__ . '/..',
         ),
         'Tuupola\\Http\\Factory\\' => 
         array (
-            0 => __DIR__ . '/..' . '/tuupola/http-factory/src',
+            0 => __DIR__ . '/..',
         ),
         'Slim\\' => 
         array (
-            0 => __DIR__ . '/..' . '/slim/slim/Slim',
+            0 => __DIR__ . '/..',
         ),
         'Psr\\Log\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+            0 => __DIR__ . '/..',
         ),
         'Psr\\Http\\Server\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
-            1 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+            0 => __DIR__ . '/..',
+            1 => __DIR__ . '/..',
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..',
+            1 => __DIR__ . '/..',
         ),
         'Psr\\Container\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/container/src',
+            0 => __DIR__ . '/..',
         ),
         'Firebase\\JWT\\' => 
         array (
-            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+            0 => __DIR__ . '/..',
         ),
         'FastRoute\\' => 
         array (
-            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+            0 => __DIR__ . '/..',
         ),
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/App',
+            0 => __DIR__ . '/../lib' . '/App',
         ),
     );
 
@@ -90,7 +90,7 @@ class ComposerStaticInit5916e7faa1324bb81d4b0f4a1022ef23
         array (
             'Pimple' => 
             array (
-                0 => __DIR__ . '/..' . '/pimple/pimple/src',
+                0 => __DIR__ . '/..',
             ),
         ),
     );

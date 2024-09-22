@@ -3,26 +3,42 @@
 /**
  * Arquivo com funções uteis
  * User: Gelvazio Camargo
- * Date: 10/12/2020
- * Time: 19:00
+ * Date: 22/09/2024
+ * Time: 11:00
  */
 
-require_once '../lib/phpfastcache/phpfastcache.php';
+require_once 'lib/phpfastcache/phpfastcache.php';
+
 class Utils {
 
     public static function isServidorProducao() {
         return false;
     }
-    
+
     public static function getCacheServer() {
-        // Ip da maquina local quando não estiver em nuvem
-        $host = '192.168.1.2';
-        $cache = phpFastCache("predis", array(
-            "redis" => array(
-                "host" => $host,
-                "port" => 6379
-            )
-        ));
+        $serverCache = "redis";
+        if ((key_exists("SERVERCACHE", $_SESSION)) && ($_SESSION["SERVERCACHE"] != "")) {
+            $serverCache = $_SESSION["SERVERCACHE"];
+        }
+
+        if ((Utils::isServidorProducao())&& ($serverCache != "files")) {
+            if(!isset($_SERVER["SERVER_REDIS"])){
+                // Ip da maquina local quando não estiver em nuvem
+                $host = '192.168.1.2';
+                $_SERVER["SERVER_REDIS"] = $host;
+            }
+
+            $cache = phpFastCache("predis", array(
+                "redis" => array(
+                    "host" => $_SERVER["SERVER_REDIS"],
+                    "port" => 6379
+                )
+            ));
+
+            return $cache;
+        }
+
+        $cache = phpFastCache("files");
 
         return $cache;
     }
@@ -160,11 +176,52 @@ class Utils {
         pg_set_client_encoding($conexaoBancoDados, "UTF-8");
 
         // Define o nome da aplicação
-        $appName = "factor-erp";
+        $appName = "apiphpsenac";
 
         pg_query("SET application_name = '$appName';");
 
         // Retorna a conexao
         return $conexaoBancoDados;
     }
+
+    /**
+     * Gera token de autenticação
+     * @param $usucodigo
+     * @param $dadosAdicionais
+     * @return string
+     * @throws Exception
+     */
+    public static function encodeToken($usucodigo, $dadosAdicionais  = false) {
+        $jwtKey = "apiphpsenac-" . date("Y-m-d") . "-key-jwt";
+
+        $usucodigo = intval($usucodigo);
+        $dados = array(
+            "usucodigo" => $usucodigo,
+            "dataToken" => date("Y-m-d"),
+        );
+
+        // Coloca os dados adicionais no token
+        if (is_array($dadosAdicionais)) {
+            $dados = array_merge($dados, $dadosAdicionais);
+        }
+
+        require_once '../lib/jwt/jwt_helper.php';
+
+        return JWT::encode($dados, $jwtKey);
+    }
+
+    /**
+     * Decodifica o token
+     * @param $token
+     * @return object
+     */
+    function decodeToken($token)
+    {
+        $jwtKey = "apiphpsenac-" . date("Y-m-d") . "-key-jwt";
+
+        require_once '../lib/jwt/jwt_helper.php';
+
+        return JWT::decode($token, $jwtKey);
+    }
+
 }

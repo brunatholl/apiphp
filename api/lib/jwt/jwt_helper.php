@@ -81,29 +81,43 @@ class JWT
 		return implode('.', $segments);
 	}
 
-	/**
-	 * Sign a string with a given key and algorithm.
-	 *
-	 * @param string $msg    The message to sign
-	 * @param string $key    The secret key
-	 * @param string $method The signing algorithm. Supported
-	 *                       algorithms are 'HS256', 'HS384' and 'HS512'
-	 *
-	 * @return string          An encrypted message
-	 * @throws DomainException Unsupported algorithm was specified
-	 */
-	public static function sign($msg, $key, $method = 'HS256')
-	{
-		$methods = array(
-			'HS256' => 'sha256',
-			'HS384' => 'sha384',
-			'HS512' => 'sha512',
-		);
-		if (empty($methods[$method])) {
-			throw new DomainException('Algorithm not supported');
-		}
-		return hash_hmac($methods[$method], $msg, $key, true);
-	}
+    /**
+     * Sign a string with a given key and algorithm.
+     *
+     * @param string $msg    The message to sign
+     * @param string $key    The private key
+     * @param string $method The signing algorithm. Supported
+     *                       algorithms are 'HS256', 'HS384', 'HS512', and 'RS256'
+     *
+     * @return string          An encrypted message
+     * @throws DomainException Unsupported algorithm was specified
+     */
+    public static function sign($msg, $key, $method = 'HS256')
+    {
+        $methods = array(
+            'HS256' => 'sha256',
+            'HS384' => 'sha384',
+            'HS512' => 'sha512',
+            'RS256' => 'RS256',
+        );
+        if (empty($methods[$method])) {
+            throw new DomainException('Algorithm not supported');
+        }
+        switch ($method) {
+            case 'HS256':
+            case 'HS384':
+            case 'HS512':
+                return hash_hmac($methods[$method], $msg, $key, true);
+            case 'RS256':
+                $signature = '';
+                if (!openssl_sign($msg, $signature, $key, 'SHA256')) {
+                    throw new DomainException('OpenSSL unable to sign data');
+                }
+                return $signature;
+            default:
+                throw new DomainException('Algorithm not supported');
+        }
+    }
 
 	/**
 	 * Decode a JSON string into a PHP object.

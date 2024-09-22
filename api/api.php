@@ -1,17 +1,15 @@
 <?php
+require_once ("../vendor/autoload.php");
 
 header("Access-Control-Allow-Origin:*");
 header('Access-Control-Allow-Credentials: false');
 header('Access-Control-Max-Age: 86400');
 date_default_timezone_set('America/Maceio');
 
-require('lib/slim/autoload.php');
-
-require_once("core/Utils.php");
+require_once('core/Utils.php');
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Exception\HttpNotFoundException;
 
 require_once("controllers/ControllerApiBase.php");
 require_once("controllers/ControllerApiPessoa.php");
@@ -53,9 +51,9 @@ class Routes {
         $app->add(function ($req, $res, $next) {
             $response = $next($req, $res);
             return $response
-                    ->withHeader('Access-Control-Allow-Origin', '*')
-                    ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-                    ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+                ->withHeader('Access-Control-Allow-Origin', '*')
+                ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+                ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
         });
 
         // Agrupando rotas para adicionar o middleware em todas as rotas de uma só vez
@@ -73,7 +71,7 @@ class Routes {
             $app->get('/pessoa', ControllerApiPessoa::class . ':getPessoa');
             $app->get('/produto', ControllerApiProduto::class . ':getProduto');
             $app->get('/usuario', ControllerApiUsuario::class . ':getUsuario');
-            
+
             // Produto
             $app->get('/produto/index', ControllerApiProduto::class . ':index');
             $app->get('/produto/create', ControllerApiProduto::class . ':index');
@@ -85,7 +83,7 @@ class Routes {
             $app->post('/criaContato', ControllerApiContato::class . ':criaContato');
             $app->post('/atualizaContato', ControllerApiContato::class . ':atualizaContato');
             $app->post('/deletaContato', ControllerApiContato::class . ':deletaContato');
-            
+
             // Documentos
             $app->get('/listaDocumentos', ControllerApiDocumento::class . ':getDocumentos');
             $app->post('/assinaDocumento', ControllerApiDocumento::class . ':assinaDocumento');
