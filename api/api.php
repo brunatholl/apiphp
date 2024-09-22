@@ -13,14 +13,15 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 require_once("controllers/ControllerApiBase.php");
 require_once("controllers/ControllerApiPessoa.php");
-require_once("controllers/ControllerApiProduto.php");
-require_once("controllers/ControllerApiSistema.php");
-require_once("controllers/ControllerApiUsuario.php");
 require_once("controllers/ControllerApiMenu.php");
-require_once("controllers/ControllerApiImagem.php");
-require_once("controllers/ControllerApiConsultaPadrao.php");
-require_once("controllers/ControllerApiContato.php");
-require_once("controllers/ControllerApiDocumento.php");
+
+// require_once("controllers/ControllerApiSistema.php");
+// require_once("controllers/ControllerApiProduto.php");
+// require_once("controllers/ControllerApiUsuario.php");
+// require_once("controllers/ControllerApiImagem.php");
+// require_once("controllers/ControllerApiConsultaPadrao.php");
+// require_once("controllers/ControllerApiContato.php");
+// require_once("controllers/ControllerApiDocumento.php");
 
 class Routes {
 
@@ -58,7 +59,10 @@ class Routes {
 
         // Agrupando rotas para adicionar o middleware em todas as rotas de uma só vez
         $app->group('', function () use ($app) {
-            $app->get('/ping', ControllerApiBase::class . ':callPing');
+            $app->get('/ping', function (Request $request, Response $response, array $args) {
+                $data = array("Info:" => date("Y-m-d H:i:s"));
+                return $response->withStatus(201)->withJson($data, 200);
+            });
 
             // Sistemas
             $app->get('/sistema', ControllerApiSistema::class . ':getSistema');
