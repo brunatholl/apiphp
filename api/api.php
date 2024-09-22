@@ -15,13 +15,13 @@ require_once("controllers/ControllerApiBase.php");
 require_once("controllers/ControllerApiPessoa.php");
 require_once("controllers/ControllerApiMenu.php");
 
-// require_once("controllers/ControllerApiSistema.php");
-// require_once("controllers/ControllerApiProduto.php");
-// require_once("controllers/ControllerApiUsuario.php");
-// require_once("controllers/ControllerApiImagem.php");
-// require_once("controllers/ControllerApiConsultaPadrao.php");
-// require_once("controllers/ControllerApiContato.php");
-// require_once("controllers/ControllerApiDocumento.php");
+require_once("controllers/ControllerApiSistema.php");
+require_once("controllers/ControllerApiUsuario.php");
+require_once("controllers/ControllerApiProduto.php");
+require_once("controllers/ControllerApiImagem.php");
+require_once("controllers/ControllerApiConsultaPadrao.php");
+require_once("controllers/ControllerApiContato.php");
+require_once("controllers/ControllerApiDocumento.php");
 
 class Routes {
 
